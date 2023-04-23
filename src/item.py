@@ -29,17 +29,24 @@ class Item:
     def name(self, item_name):
         if len(item_name) <= 10:
             self.__name = item_name
+        else:
+            print('Длина наименования товара превышает 10 символов')
 
     @classmethod
     def instantiate_from_csv(cls):
-        with open('items.csv', newline='') as csvfile:
-            fieldnames = ['name', 'price', 'quantity']
-            writer = csv.DictReader(csvfile, fieldnames=fieldnames)
-        return cls(name=str, price=float, quantity=int)
+        with open('../src/items.csv', newline='') as f:
+            reader = csv.reader(f)
+            next(reader)
+            for row in reader:
+                name = row[0]
+                price = float(row[1])
+                quantity = int(row[2])
+                cls(name, price, quantity)
 
     @staticmethod
-    def string_to_number():
-        pass
+    def string_to_number(number):
+        return_number = float(number)
+        return int(return_number)
 
     def calculate_total_price(self) -> float:
         """
