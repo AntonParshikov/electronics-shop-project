@@ -35,8 +35,8 @@ class Item:
     @classmethod
     def instantiate_from_csv(cls):
         cls.all = []
-        with open('../src/items.csv', newline='') as f:
-            reader = csv.reader(f)
+        with open('../src/items.csv', newline='') as file:
+            reader = csv.reader(file)
             next(reader)
             for row in reader:
                 name = row[0]
