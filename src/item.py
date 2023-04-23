@@ -35,7 +35,7 @@ class Item:
         with open('items.csv', newline='') as csvfile:
             fieldnames = ['name', 'price', 'quantity']
             writer = csv.DictReader(csvfile, fieldnames=fieldnames)
-        return cls(writer)
+        return cls(name=str, price=float, quantity=int)
 
     @staticmethod
     def string_to_number():
