@@ -34,6 +34,7 @@ class Item:
 
     @classmethod
     def instantiate_from_csv(cls):
+        cls.all = []
         with open('../src/items.csv', newline='') as f:
             reader = csv.reader(f)
             next(reader)
@@ -45,8 +46,7 @@ class Item:
 
     @staticmethod
     def string_to_number(number):
-        return_number = float(number)
-        return int(return_number)
+        return int(float(number))
 
     def calculate_total_price(self) -> float:
         """
