@@ -21,6 +21,12 @@ class Item:
         self.quantity = quantity
         Item.all.append(self)
 
+    def __repr__(self):
+        return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
+
+    def __str__(self):
+        return f'{self.__name}'
+
     @property
     def name(self):
         return self.__name
@@ -59,7 +65,7 @@ class Item:
         self.price = self.price * self.pay_rate
         return self.price
 
-    def __repr__(self):
-        module_name = "__main__"
-        class_name = self.__class__.__name__
-        return f"<{module_name}.{class_name} object at {hex(id(all))}>"
+    # def __repr__(self):
+    #     module_name = "__main__"
+    #     class_name = self.__class__.__name__
+    #     return f"<{module_name}.{class_name} object at {hex(id(all))}>"
