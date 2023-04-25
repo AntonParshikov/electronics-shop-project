@@ -33,3 +33,11 @@ def test_name():
 
 def test_string_to_number():
     assert Item.string_to_number("10.0") == 10
+
+
+def test_repr(data):
+    assert repr(data) == "Item('TV', 15000, 5)"
+
+
+def test_str(data):
+    assert str(data) == 'TV'
