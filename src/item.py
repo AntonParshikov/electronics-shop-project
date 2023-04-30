@@ -32,11 +32,11 @@ class Item:
         return self.__name
 
     @name.setter
-    def name(self, item_name):
-        if len(item_name) <= 10:
-            self.__name = item_name
+    def name(self, new_name: str):
+        if len(new_name) > 10:
+            raise ValueError("Длина наименования товара превышает 10 символов.")
         else:
-            raise Exception('Длина наименования товара превышает 10 символов')
+            self.__name = new_name
 
     @classmethod
     def instantiate_from_csv(cls):
