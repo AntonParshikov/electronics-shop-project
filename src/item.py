@@ -65,6 +65,14 @@ class Item:
         self.price = self.price * self.pay_rate
         return self.price
 
+    def __add__(self, other):
+        if isinstance(other, self.__class__):
+            return self.quantity + other.quantity
+        return None
+
+
+
+
     # def __repr__(self):
     #     module_name = "__main__"
     #     class_name = self.__class__.__name__
