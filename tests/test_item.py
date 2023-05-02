@@ -2,6 +2,7 @@
 import pytest as pytest
 
 from src.item import Item
+from src.phone import Phone
 
 
 @pytest.fixture
@@ -41,3 +42,8 @@ def test_repr(data):
 
 def test_str(data):
     assert str(data) == 'TV'
+
+
+def test_add(data):
+    phone1 = Phone("iPhone 14", 120_000, 5, 2)
+    assert data.quantity + phone1.quantity == 10
