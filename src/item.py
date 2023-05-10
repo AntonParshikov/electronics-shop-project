@@ -16,10 +16,12 @@ class Item:
         :param price: Цена за единицу товара.
         :param quantity: Количество товара в магазине.
         """
+        super().__init__()
         self.__name = name
         self.price = price
         self.quantity = quantity
         Item.all.append(self)
+
 
     def __repr__(self):
         return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
@@ -69,11 +71,3 @@ class Item:
         if isinstance(other, self.__class__):
             return self.quantity + other.quantity
         return None
-
-
-
-
-    # def __repr__(self):
-    #     module_name = "__main__"
-    #     class_name = self.__class__.__name__
-    #     return f"<{module_name}.{class_name} object at {hex(id(all))}>"
