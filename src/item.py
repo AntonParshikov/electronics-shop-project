@@ -1,4 +1,5 @@
 import csv
+from src.error_exception import InstantiateCSVError
 
 
 class Item:
@@ -22,7 +23,6 @@ class Item:
         self.quantity = quantity
         Item.all.append(self)
 
-
     def __repr__(self):
         return f"{self.__class__.__name__}('{self.__name}', {self.price}, {self.quantity})"
 
@@ -41,12 +41,17 @@ class Item:
             self.__name = new_name
 
     @classmethod
-    def instantiate_from_csv(cls):
-        with open('../src/items.csv') as file:
-            reader = csv.DictReader(file)
-            next(reader)
-            for row in reader:
-                cls(row['name'], float(row['price']), int(row['quantity']))
+    def instantiate_from_csv(cls, url='../src/items.csv'):
+        try:
+            with open('../src/items.csv') as file:
+                reader = csv.DictReader(file)
+                next(reader)
+                for row in reader:
+                    cls(row['name'], float(row['price']), int(row['quantity']))
+        except FileNotFoundError:
+            raise FileNotFoundError('Отсутствует файл item.csv')
+        except InstantiateCSVError:
+            raise InstantiateCSVError('Файл item.csv поврежден')
 
     @staticmethod
     def string_to_number(number):
